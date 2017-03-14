@@ -41,9 +41,16 @@ Route::group(['middleware' => ['web']], function(){
 		'uses' => 'PostController@postCreatePost',
 		'as' => 'post.create'
 	])->middleware('auth');
+
 	Route::get('/delete/{id}', [
 		'uses' => 'PostController@getDeletePost',
 		'as' => 'post.create'
 	])->middleware('auth');
+
 	Route::post('/edit','PostController@postEditPost')->name('edit');
+
+	Route::post('/like', [
+		'uses' => 'PostController@postLikePost',
+		'as' => 'like'
+	]);
 });
